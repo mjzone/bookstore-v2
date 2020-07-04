@@ -1,0 +1,22 @@
+type Book 
+  @model
+  @auth (
+    rules: [
+      # allow admins to create, update and delete books
+      { allow: groups, groups: ["Admin"] },
+
+      # allow all authenticated users to read posts
+      { allow: private, operations: [read] },
+
+      # allow all guest users (not authenticated) to read posts
+      { allow: public, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  title: String!
+  description: String
+  imageURL: String
+  author: String!
+  featured: Boolean
+  price: Float 
+}
