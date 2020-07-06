@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { API, graphqlOperation, Storage } from "aws-amplify";
 import { withAuthenticator } from '@aws-amplify/ui-react'
 import { AmplifyAuthenticator, AmplifySignIn, AmplifySignOut } from '@aws-amplify/ui-react';
-import { createBook } from '../graphql/mutations'
+import { createBook } from '../api/mutations'
 // import { listBooks } from '../graphql/queries'
 import config from '../aws-exports'
 

@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@aws-amplify/ui-react": "^0.2.9",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.7.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",

@@ -1,41 +1,53 @@
 {
-    "auth": {
-        "bookstorev26c74adc1": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        }
-    },
-    "storage": {
-        "s34587bb48": {
-            "service": "S3",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "api": {
-        "bookstorev2": {
-            "service": "AppSync",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "authConfig": {
-                    "additionalAuthenticationProviders": [
-                        {
-                            "authenticationType": "API_KEY",
-                            "apiKeyConfig": {
-                                "description": "public access to books",
-                                "apiKeyExpirationDays": 7
-                            }
-                        }
-                    ],
-                    "defaultAuthentication": {
-                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-                        "userPoolConfig": {
-                            "userPoolId": "authbookstorev26c74adc1"
-                        }
-                    }
-                }
-            }
-        }
-    }
+	"auth": {
+		"bookstorev26c74adc1": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"storage": {
+		"s34587bb48": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"api": {
+		"bookstorev2": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [
+						{
+							"authenticationType": "API_KEY",
+							"apiKeyConfig": {
+								"description": "public access to books",
+								"apiKeyExpirationDays": 7
+							}
+						}
+					],
+					"defaultAuthentication": {
+						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
+						"userPoolConfig": {
+							"userPoolId": "authbookstorev26c74adc1"
+						}
+					}
+				}
+			}
+		}
+	},
+	"function": {
+		"bookstorev2929dc805": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
+		},
+		"bookstorev269302e96": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
+		}
+	}
 }

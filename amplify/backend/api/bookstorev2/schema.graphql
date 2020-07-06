@@ -1,5 +1,5 @@
 type Book 
-  @model
+  @model(subscriptions: null)
   @auth (
     rules: [
       # allow admins to create, update and delete books
@@ -18,5 +18,71 @@ type Book
   imageURL: String
   author: String!
   featured: Boolean
-  price: Float 
+  price: Float
+  orders: [BookOrder] @connection(keyName:"byBook", fields:["id"])
+}
+
+type BookOrder
+  @model(queries: null, subscriptions: null)
+  @key(name: "byBook", fields: ["bookId", "orderId"])
+  @key(name: "byOrder", fields: ["orderId", "bookId"])
+  @auth(
+    rules: [
+      # allow admins to create bookorders for customers by using customer email in lambda
+      { allow: owner, identityClaim: "email", ownerField: "customer"},
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ){
+    id: ID!
+    bookId: ID!
+    orderId: ID!
+    book: Book @connection(fields: ["bookId"])
+    order: Order @connection(fields: ["orderId"])
+}
+
+type Order 
+  @model(subscriptions: null)
+  @auth(
+    rules: [
+      # only owner can see his orders
+      { allow: owner, identityClaim: "email", ownerField: "customer"},
+
+      # allow admins to view orders
+      { allow: groups, groups: ["Admin"]}
+    ]
+  )
+  @key(name: "byUser", fields: ["user"]) 
+{
+  id: ID!
+  user: String!
+  date: String
+  total: Float
+  books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
+}
+
+enum OrderStatus{
+  SUCCESS
+  FAILED
+}
+
+input CartItem {
+  id: ID
+  title: String
+  image: String
+  price: Float
+  amount: Int
+}
+
+input ProcessOrderInput {
+  id: ID!
+  cart: [CartItem]
+  total: Float!
+  tokenId: String!
+  address: String
+}
+
+type Mutation{
+  processOrder(input: ProcessOrderInput!): OrderStatus 
+  @function(name: "process-stripe-payment-${env}") 
+  @function(name: "create-order-${env}")
 }

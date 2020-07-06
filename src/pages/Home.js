@@ -17,7 +17,6 @@ const Home = () => {
                     <h3>Featured Collection</h3>
                 </header>
                 <div className="books featured-list">
-                    {/* {featured.length === 0 ? <h3>No featured books</h3> : <span />} */}
                     {featured.map(({ id, imageURL, title }) => (
                         <article key={id} className="book featured-book">
                             <div className="book-image">

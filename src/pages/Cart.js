@@ -4,10 +4,10 @@ import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
 // import EmptyCart from "../components/Cart/EmptyCart";
 // import CartItem from "../components/Cart/CartItem";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Cart = () => {
-  const user = false;
+  const history = useHistory();
   const { cart, total, increaseAmount, decreaseAmount } = useContext(CartContext);
 
   if (!cart.length) {
@@ -40,7 +40,7 @@ const Cart = () => {
         <h3>Total: $ {total}</h3>
       </div>
       <div>
-        <button className="btn">Checkout</button>
+        <button className="btn" onClick={()=> history.push("/checkout")}>Checkout</button>
       </div>
     </section>
   );

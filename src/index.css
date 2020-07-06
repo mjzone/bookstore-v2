@@ -297,6 +297,22 @@ nav ul {
   flex: 1 1 10rem;
 }
 
+/* Checkout Section */
+.checkout {
+  width: 50%;
+  margin: auto;
+}
+
+.checkout-form{
+  display: flex;
+  flex-direction: column;
+  margin: 3rem 0;
+}
+
+.stripe-section{
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 933px) {
   html {
     font-size: 62.5%;
