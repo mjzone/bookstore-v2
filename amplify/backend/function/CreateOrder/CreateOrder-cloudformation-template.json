@@ -33,12 +33,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"create-order",
+						"createOrderLambda",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"create-order",
+									"createOrderLambda",
 									"-",
 									{
 										"Ref": "env"
@@ -67,8 +67,8 @@
 				"Runtime": "nodejs12.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "amplify-bookstorev2-dev-154551-deployment",
-					"S3Key": "amplify-builds/bookstorev269302e96-5575367175684f477673-build.zip"
+					"S3Bucket": "amplify-bookstorebeta-dev-164506-deployment",
+					"S3Key": "amplify-builds/CreateOrder-53675546503930684141-build.zip"
 				}
 			}
 		},
@@ -78,12 +78,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"bookstorev2LambdaRole59551f5a",
+						"bookstorebetaLambdaRole17a69330",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"bookstorev2LambdaRole59551f5a",
+									"bookstorebetaLambdaRole17a69330",
 									"-",
 									{
 										"Ref": "env"

@@ -1,5 +1,5 @@
 projects:
-  bookstorev2:
+  BookstoreBeta:
     schemaPath: src/graphql/schema.json
     includes:
       - src/graphql/**/*.js

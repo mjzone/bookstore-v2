@@ -11,7 +11,7 @@ const Cart = () => {
   const { cart, total, increaseAmount, decreaseAmount } = useContext(CartContext);
 
   if (!cart.length) {
-    return <h3>Cart is empty</h3>
+    return <h3>Empty Cart</h3>
   }
   return (
     <section className="cart">

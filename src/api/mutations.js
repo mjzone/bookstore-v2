@@ -13,15 +13,15 @@ export const createBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
       orders {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -41,15 +41,15 @@ export const updateBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
       orders {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -69,15 +69,15 @@ export const deleteBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
       orders {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -95,8 +95,8 @@ export const createBookOrder = /* GraphQL */ `
   ) {
     createBookOrder(input: $input, condition: $condition) {
       id
-      bookId
-      orderId
+      book_id
+      order_id
       order {
         id
         user
@@ -114,7 +114,7 @@ export const createBookOrder = /* GraphQL */ `
         id
         title
         description
-        imageURL
+        image
         author
         featured
         price
@@ -134,8 +134,8 @@ export const updateBookOrder = /* GraphQL */ `
   ) {
     updateBookOrder(input: $input, condition: $condition) {
       id
-      bookId
-      orderId
+      book_id
+      order_id
       order {
         id
         user
@@ -153,7 +153,7 @@ export const updateBookOrder = /* GraphQL */ `
         id
         title
         description
-        imageURL
+        image
         author
         featured
         price
@@ -173,8 +173,8 @@ export const deleteBookOrder = /* GraphQL */ `
   ) {
     deleteBookOrder(input: $input, condition: $condition) {
       id
-      bookId
-      orderId
+      book_id
+      order_id
       order {
         id
         user
@@ -192,7 +192,7 @@ export const deleteBookOrder = /* GraphQL */ `
         id
         title
         description
-        imageURL
+        image
         author
         featured
         price
@@ -218,8 +218,8 @@ export const createOrder = /* GraphQL */ `
       books {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -243,8 +243,8 @@ export const updateOrder = /* GraphQL */ `
       books {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -268,8 +268,8 @@ export const deleteOrder = /* GraphQL */ `
       books {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }

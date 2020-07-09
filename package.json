@@ -16,6 +16,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "react-stripe-elements": "^6.0.1",
+    "stripe": "^8.68.0",
     "uuid": "^8.2.0"
   },
   "scripts": {

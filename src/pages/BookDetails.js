@@ -14,7 +14,7 @@ const BookDetails = () => {
         return <h3>Loading...</h3>
     }
 
-    const { imageURL: url, title, description, author, price, } = book;
+    const { image: url, title, description, author, price, } = book;
 
     return (
         <section className="book-details">

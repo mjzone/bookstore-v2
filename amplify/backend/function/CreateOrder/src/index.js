@@ -1,5 +1,3 @@
-
-
 exports.handler = async (event) => {
     // Get the stashed body from first function
     // Create the order

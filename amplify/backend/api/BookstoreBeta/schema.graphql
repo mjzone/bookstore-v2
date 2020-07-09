@@ -15,8 +15,8 @@ type Book
   id: ID!
   title: String!
   description: String
-  imageURL: String
-  author: String!
+  image: String
+  author: String
   featured: Boolean
   price: Float
   orders: [BookOrder] @connection(keyName:"byBook", fields:["id"])
@@ -24,8 +24,8 @@ type Book
 
 type BookOrder
   @model(queries: null, subscriptions: null)
-  @key(name: "byBook", fields: ["bookId", "orderId"])
-  @key(name: "byOrder", fields: ["orderId", "bookId"])
+  @key(name: "byBook", fields: ["book_id", "order_id"])
+  @key(name: "byOrder", fields: ["order_id", "book_id"])
   @auth(
     rules: [
       # allow admins to create bookorders for customers by using customer email in lambda
@@ -34,10 +34,10 @@ type BookOrder
     ]
   ){
     id: ID!
-    bookId: ID!
-    orderId: ID!
-    book: Book @connection(fields: ["bookId"])
-    order: Order @connection(fields: ["orderId"])
+    book_id: ID!
+    order_id: ID!
+    book: Book @connection(fields: ["book_id"])
+    order: Order @connection(fields: ["order_id"])
 }
 
 type Order 
@@ -66,7 +66,7 @@ enum OrderStatus{
 }
 
 input CartItem {
-  id: ID
+  id: ID!
   title: String
   image: String
   price: Float
@@ -77,12 +77,12 @@ input ProcessOrderInput {
   id: ID!
   cart: [CartItem]
   total: Float!
-  tokenId: String!
+  token: String!
   address: String
 }
 
 type Mutation{
   processOrder(input: ProcessOrderInput!): OrderStatus 
-  @function(name: "process-stripe-payment-${env}") 
-  @function(name: "create-order-${env}")
+  @function(name: "collectPaymentLambda-${env}") 
+  @function(name: "createOrderLambda-${env}")
 }

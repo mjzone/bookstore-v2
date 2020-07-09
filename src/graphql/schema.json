@@ -201,7 +201,7 @@
           "name" : "books",
           "description" : null,
           "args" : [ {
-            "name" : "bookId",
+            "name" : "book_id",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
@@ -370,7 +370,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "bookId",
+          "name" : "book_id",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -385,7 +385,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "orderId",
+          "name" : "order_id",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -511,7 +511,7 @@
           "isDeprecated" : false,
           "deprecationReason" : null
         }, {
-          "name" : "imageURL",
+          "name" : "image",
           "description" : null,
           "args" : [ ],
           "type" : {
@@ -526,13 +526,9 @@
           "description" : null,
           "args" : [ ],
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "String",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
           },
           "isDeprecated" : false,
           "deprecationReason" : null
@@ -562,7 +558,7 @@
           "name" : "orders",
           "description" : null,
           "args" : [ {
-            "name" : "orderId",
+            "name" : "order_id",
             "description" : null,
             "type" : {
               "kind" : "INPUT_OBJECT",
@@ -749,7 +745,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "bookId",
+          "name" : "book_id",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -758,7 +754,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "orderId",
+          "name" : "order_id",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -1505,7 +1501,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "imageURL",
+          "name" : "image",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2018,7 +2014,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "tokenId",
+          "name" : "token",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2052,9 +2048,13 @@
           "name" : "id",
           "description" : null,
           "type" : {
-            "kind" : "SCALAR",
-            "name" : "ID",
-            "ofType" : null
+            "kind" : "NON_NULL",
+            "name" : null,
+            "ofType" : {
+              "kind" : "SCALAR",
+              "name" : "ID",
+              "ofType" : null
+            }
           },
           "defaultValue" : null
         }, {
@@ -2134,7 +2134,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "imageURL",
+          "name" : "image",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -2146,13 +2146,9 @@
           "name" : "author",
           "description" : null,
           "type" : {
-            "kind" : "NON_NULL",
-            "name" : null,
-            "ofType" : {
-              "kind" : "SCALAR",
-              "name" : "String",
-              "ofType" : null
-            }
+            "kind" : "SCALAR",
+            "name" : "String",
+            "ofType" : null
           },
           "defaultValue" : null
         }, {
@@ -2201,7 +2197,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "imageURL",
+          "name" : "image",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2312,7 +2308,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "imageURL",
+          "name" : "image",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -2384,7 +2380,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "bookId",
+          "name" : "book_id",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2397,7 +2393,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "orderId",
+          "name" : "order_id",
           "description" : null,
           "type" : {
             "kind" : "NON_NULL",
@@ -2419,7 +2415,7 @@
         "description" : null,
         "fields" : null,
         "inputFields" : [ {
-          "name" : "bookId",
+          "name" : "book_id",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2428,7 +2424,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "orderId",
+          "name" : "order_id",
           "description" : null,
           "type" : {
             "kind" : "INPUT_OBJECT",
@@ -2494,7 +2490,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "bookId",
+          "name" : "book_id",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",
@@ -2503,7 +2499,7 @@
           },
           "defaultValue" : null
         }, {
-          "name" : "orderId",
+          "name" : "order_id",
           "description" : null,
           "type" : {
             "kind" : "SCALAR",

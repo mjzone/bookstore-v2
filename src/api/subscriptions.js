@@ -7,7 +7,7 @@ export const onCreateBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
@@ -22,7 +22,7 @@ export const onUpdateBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
@@ -37,7 +37,7 @@ export const onDeleteBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price

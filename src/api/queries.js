@@ -11,8 +11,8 @@ export const getOrder = /* GraphQL */ `
       books {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }
@@ -56,7 +56,7 @@ export const listBooks = /* GraphQL */ `
         id
         title
         description
-        imageURL
+        image
         author
         featured
         price
@@ -73,15 +73,15 @@ export const getBook = /* GraphQL */ `
       id
       title
       description
-      imageURL
+      image
       author
       featured
       price
       orders {
         items {
           id
-          bookId
-          orderId
+          book_id
+          order_id
           createdAt
           updatedAt
         }

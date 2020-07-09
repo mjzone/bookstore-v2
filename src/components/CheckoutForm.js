@@ -28,13 +28,13 @@ const CARD_ELEMENT_OPTIONS = {
 const CheckoutForm = () => {
     const { cart, total } = useContext(CartContext);
     const { checkout } = useContext(BookContext);
-    const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, tokenId: null });
+    const [orderDetails, setOrderDetails] = useState({ cart, total, address: null, token: null });
     const [error, setError] = useState(null);
     const stripe = useStripe();
     const elements = useElements();
 
     useEffect(() => {
-        if (orderDetails.tokenId) {
+        if (orderDetails.token) {
             checkout(orderDetails);
         }
     }, [orderDetails])
@@ -59,9 +59,8 @@ const CheckoutForm = () => {
         } else {
             setError(null);
             // Send the token to your server.
-            debugger
             const token = result.token;
-            setOrderDetails({ ...orderDetails, tokenId: token.id });
+            setOrderDetails({ ...orderDetails, token: token.id });
         }
     };
 

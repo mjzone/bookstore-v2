@@ -1,20 +1,35 @@
 {
 	"auth": {
-		"bookstorev26c74adc1": {
+		"userPoolGroups": {
+			"service": "Cognito-UserPool-Groups",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "BookstoreAuth",
+					"attributes": [
+						"UserPoolId",
+						"AppClientIDWeb",
+						"AppClientID",
+						"IdentityPoolId"
+					]
+				}
+			]
+		},
+		"BookstoreAuth": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
-			"dependsOn": [],
-			"customAuth": false
+			"dependsOn": []
 		}
 	},
 	"storage": {
-		"s34587bb48": {
+		"BookstoreBetaImages": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
 		}
 	},
 	"api": {
-		"bookstorev2": {
+		"BookstoreBeta": {
 			"service": "AppSync",
 			"providerPlugin": "awscloudformation",
 			"output": {
@@ -23,15 +38,15 @@
 						{
 							"authenticationType": "API_KEY",
 							"apiKeyConfig": {
-								"description": "public access to books",
-								"apiKeyExpirationDays": 7
+								"description": "anyone can see the books before logging in",
+								"apiKeyExpirationDays": "365"
 							}
 						}
 					],
 					"defaultAuthentication": {
 						"authenticationType": "AMAZON_COGNITO_USER_POOLS",
 						"userPoolConfig": {
-							"userPoolId": "authbookstorev26c74adc1"
+							"userPoolId": "authBookstoreAuth"
 						}
 					}
 				}
@@ -39,12 +54,12 @@
 		}
 	},
 	"function": {
-		"bookstorev2929dc805": {
+		"CollectPayment": {
 			"build": true,
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda"
 		},
-		"bookstorev269302e96": {
+		"CreateOrder": {
 			"build": true,
 			"providerPlugin": "awscloudformation",
 			"service": "Lambda"

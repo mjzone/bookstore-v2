@@ -7,7 +7,7 @@ import { BookContext } from "../context/books";
 const Home = () => {
     const { featured } = useContext(BookContext);
     if (!featured.length) {
-        return <h3>Loading...</h3>
+        return <h3>No Featured Books</h3>
     }
     return (
         <>
@@ -17,10 +17,10 @@ const Home = () => {
                     <h3>Featured Collection</h3>
                 </header>
                 <div className="books featured-list">
-                    {featured.map(({ id, imageURL, title }) => (
+                    {featured.map(({ id, image, title }) => (
                         <article key={id} className="book featured-book">
                             <div className="book-image">
-                                <img src={imageURL} alt={title} />
+                                <img src={image} alt={title} />
                             </div>
                             <Link to={`books/${id}`} className="btn book-link">details</Link>
                         </article>

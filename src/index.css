@@ -91,7 +91,7 @@ nav ul {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 45vh;
+  min-height: 43vh;
   color: white;
   display: flex;
   flex-direction: column;
@@ -127,7 +127,6 @@ nav ul {
   text-align: center;
   width: 90%;
   margin: auto;
-  padding: 20px 0 0 0;
 }
 
 .book {
@@ -137,14 +136,14 @@ nav ul {
   align-items: center;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1), 0px 20px 20px rgba(0, 0, 0, 0.1);
   width: 22rem;
-  height: 30rem;
+  height: 28rem;
   margin: 3rem 4rem;
   border-top: 1px solid #efefef;
   background: floralwhite;
 }
 
 .featured-list {
-  justify-content: flex-start;
+  justify-content: space-evenly;
 }
 
 .featured-book {
@@ -201,8 +200,8 @@ nav ul {
 
 /* Admin Section */
 
-.add-book {
-  width: 90%;
+.admin-wrapper {
+  width: 70%;
   margin: auto;
   text-align: center;
 }
@@ -252,8 +251,14 @@ nav ul {
   text-align: left;
 }
 
-.title-form, .description-form, .author-form, .price-form, .submit-form {
-  padding: 2rem;
+.title-form, .description-form, .author-form, .price-form, .submit-form, .featured-form {
+  padding: 0.7rem;
+}
+
+.form-fields .featured-checkbox{
+  width: 2rem;
+  position: relative;
+  top: 1.4rem;
 }
 
 .submit-form {
@@ -273,7 +278,7 @@ nav ul {
   flex-direction: column;
 }
 
-.cart-item{
+.cart-item {
   margin: 2rem 0rem;
   display: flex;
   justify-content: space-around;
@@ -281,11 +286,11 @@ nav ul {
   flex-wrap: wrap;
 }
 
-.cart-item .image{
+.cart-item .image {
   flex: 1 1 10rem;
 }
 
-.cart-item img{
+.cart-item img {
   width: 10rem;
 }
 
@@ -293,23 +298,30 @@ nav ul {
   flex: 2 1 10rem;
 }
 
-.cart-item .amount{
+.cart-item .amount {
   flex: 1 1 10rem;
 }
 
+.cart-empty {
+  position: absolute;
+  top: 48%;
+  left: 40%;
+}
+
 /* Checkout Section */
-.checkout {
-  width: 50%;
+
+.checkout-wrapper {
+  width: 60%;
   margin: auto;
 }
 
-.checkout-form{
+.checkout-form {
   display: flex;
   flex-direction: column;
   margin: 3rem 0;
 }
 
-.stripe-section{
+.stripe-section {
   margin-top: 2rem;
 }
 

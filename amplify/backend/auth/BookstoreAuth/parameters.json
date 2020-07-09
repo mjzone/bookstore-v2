@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "bookstorev26c74adc1_identitypool_6c74adc1",
+    "identityPoolName": "BookstoreAuth_identitypool_ba954e84",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "bookst6c74adc1",
-    "userPoolName": "bookstorev26c74adc1_userpool_6c74adc1",
+    "resourceNameTruncated": "Bookste1218640",
+    "userPoolName": "BookstoreBetaAuth",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -18,21 +18,31 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "email"
+        "email",
+        "name"
     ],
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "email"
+        "email",
+        "name"
     ],
     "userpoolClientReadAttributes": [
-        "email"
+        "email",
+        "name"
     ],
-    "userpoolClientLambdaRole": "bookst6c74adc1_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": false,
-    "sharedId": "6c74adc1",
-    "resourceName": "bookstorev26c74adc1",
+    "userpoolClientLambdaRole": "Bookste1218640_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "useDefault": "manual",
     "authSelections": "identityPoolAndUserPool",
+    "resourceName": "BookstoreAuth",
+    "userPoolGroups": true,
+    "adminQueries": false,
+    "triggers": "{}",
+    "hostedUI": false,
+    "userPoolGroupList": [
+        "Admin"
+    ],
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -45,7 +55,9 @@
             "Arn"
         ]
     },
-    "useDefault": "default",
-    "userPoolGroupList": [],
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
     "dependsOn": []
 }
