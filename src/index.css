@@ -1,6 +1,7 @@
 /* Global Styles */
 
 @import url('https://fonts.googleapis.com/css2?family=Pattaya&family=Poppins:wght@400;500&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,11 @@ h1 {
   font-size: 2.6rem;
 }
 
-li, button, label, input, p {
+li,
+button,
+label,
+input,
+p {
   font-size: 2rem;
 }
 
@@ -32,7 +37,8 @@ h3 {
   font-weight: 400;
 }
 
-h4, h5 {
+h4,
+h5 {
   font-size: 2.8rem;
 }
 
@@ -251,11 +257,16 @@ nav ul {
   text-align: left;
 }
 
-.title-form, .description-form, .author-form, .price-form, .submit-form, .featured-form {
+.title-form,
+.description-form,
+.author-form,
+.price-form,
+.submit-form,
+.featured-form {
   padding: 0.7rem;
 }
 
-.form-fields .featured-checkbox{
+.form-fields .featured-checkbox {
   width: 2rem;
   position: relative;
   top: 1.4rem;
@@ -313,6 +324,7 @@ nav ul {
 .checkout-wrapper {
   width: 60%;
   margin: auto;
+  text-align: center;
 }
 
 .checkout-form {
@@ -329,12 +341,15 @@ nav ul {
   html {
     font-size: 62.5%;
   }
+
   nav {
     text-align: center;
   }
+
   #logo {
     padding: 1rem;
   }
+
   .book-details {
     margin-top: 4rem;
   }
