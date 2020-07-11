@@ -1,0 +1,66 @@
+#A user get their own bookorder lists
+query{
+  listOrders{
+    items{
+      total
+      books{
+        items{
+          book{
+            title
+            image
+            price
+            author
+          }
+        }
+      }
+    }
+  }
+}
+
+#But admin can get all the orders of all the users and add filters too.
+query{
+  listOrders(filter: {
+    user: {
+      eq: "Manoj Fernando"
+    }
+  }){
+    items{
+      total
+      books{
+        items{
+          book{
+            title
+            image
+            price
+            author
+          }
+        }
+      }
+    }
+  }
+}
+
+# Link book and the order
+mutation{
+  createBookOrder(input: {
+    id: "bo123"
+    book_id: "673309be-1769-493f-9d15-4f75e010bde1"
+    order_id: "1001"
+  }){
+  	order_id
+    book_id
+  }
+}
+
+# Create a new order
+mutation{
+  createOrder(input: {
+    id: "1001"
+    user: "Manoj Fernando"
+    total: 95.90
+  }){
+    id
+    user
+    total
+  }
+}

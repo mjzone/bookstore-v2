@@ -8,21 +8,19 @@ const BOOK_ORDER_TABLE = "BookOrder-we6cwg6juveevi6sihqok72ayi-dev";
 const BOOK_ORDER_TYPE = "BookOrder";
 
 const createOrder = async (payload) => {
-  const { order_id, username, email, total } = payload;
+  const { order_id, username, total } = payload;
   var params = {
     TableName: ORDER_TABLE,
     Item: {
       id: order_id,
       __typename: ORDER_TYPE,
-      user: username,
-      customer: email,
+      customer: username,
       total: total,
-      updatedAt: new Date().toISOString(),
-      createdAt: new Date().toISOString()
+      updatedAt: new Date(),
+      createdAt: new Date()
     }
   };
-  console.log(params);
-  await documentClient.put(params).promise();
+  await documentClient.put(params);
 };
 
 const createBookOrder = async (payload) => {
@@ -37,8 +35,8 @@ const createBookOrder = async (payload) => {
           book_id: cartItem.id,
           order_id: payload.order_id,
           customer: payload.email,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       }
     });
@@ -47,19 +45,20 @@ const createBookOrder = async (payload) => {
     RequestItems: {}
   };
   params["RequestItems"][BOOK_ORDER_TABLE] = bookOrders;
-  await documentClient.batchWrite(params).promise();
+  await documentClient.batchWrite(params);
 };
 
 exports.handler = async (event) => {
   try {
     let payload = event.prev.result;
     payload.order_id = uuidv4();
+
     // create a new order
-    const order = await createOrder(payload);
-    console.log(order);
+    await createOrder(payload);
+
     // links books with the order
-    const bookOrder = await createBookOrder(payload);
-    console.log(bookOrder);
+    await createBookOrder(payload);
+
     return "SUCCESS";
   } catch (err) {
     console.log(err);
