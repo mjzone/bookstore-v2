@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// Amplify API
+// Amplify
 import Amplify from "aws-amplify";
+
 // Pages
 import Home from "./pages/Home"
 import Error from "./pages/Error";

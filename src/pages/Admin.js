@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
-// Amplify API
 import { API, graphqlOperation, Storage } from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignIn, AmplifySignOut, AmplifySignUp } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { createBook } from '../api/mutations'
-// import { listBooks } from '../graphql/queries'
 import config from '../aws-exports'
 
 const {
@@ -53,36 +51,6 @@ const Admin = () => {
     return (
         <section className="admin-wrapper">
             <AmplifyAuthenticator>
-                <AmplifySignUp
-                    slot="sign-up"
-                    formFields={[
-                        {
-                            type: "name",
-                            label: "Name",
-                            placeholder: "Enter your name",
-                            required: true,
-                        },
-                        {
-                            type: "username",
-                            label: "Username",
-                            placeholder: "Enter your username",
-                            required: true,
-                        },
-                        {
-                            type: "email",
-                            label: "Email",
-                            placeholder: "Enter your email",
-                            required: true,
-                        },
-                        {
-                            type: "password",
-                            label: "Password",
-                            placeholder: "Enter your password",
-                            required: true,
-                        }
-                    ]}
-                />
-                <AmplifySignIn headerText="My Custom Sign In Text" slot="sign-in"></AmplifySignIn>
                 <section>
                     <header className="form-header">
                         <h3>Add New Book</h3>
@@ -155,8 +123,6 @@ const Admin = () => {
                 </section>
             </AmplifyAuthenticator>
         </section>
-
-
     )
 }
 
