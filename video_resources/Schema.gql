@@ -1,13 +1,11 @@
-type Book 
+type Book
   @model(subscriptions: null)
-  @auth (
+  @auth(
     rules: [
       # allow admins to create, update and delete books
-      { allow: groups, groups: ["Admin"] },
-
+      { allow: groups, groups: ["Admin"] }
       # allow all authenticated users to read posts
-      { allow: private, operations: [read] },
-
+      { allow: private, operations: [read] }
       # allow all guest users (not authenticated) to read posts
       { allow: public, operations: [read] }
     ]
@@ -19,7 +17,7 @@ type Book
   author: String
   featured: Boolean
   price: Float
-  orders: [BookOrder] @connection(keyName:"byBook", fields:["id"])
+  orders: [BookOrder] @connection(keyName: "byBook", fields: ["id"])
 }
 
 type BookOrder
@@ -29,30 +27,28 @@ type BookOrder
   @auth(
     rules: [
       # allow admins to create bookorders for customers by using customer email in lambda
-      { allow: owner, identityClaim: "email", ownerField: "customer"},
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
       { allow: groups, groups: ["Admin"] }
     ]
-  ){
-    id: ID!
-    book_id: ID!
-    order_id: ID!
-    book: Book @connection(fields: ["book_id"])
-    order: Order @connection(fields: ["order_id"])
+  ) {
+  id: ID!
+  book_id: ID!
+  order_id: ID!
+  book: Book @connection(fields: ["book_id"])
+  order: Order @connection(fields: ["order_id"])
 }
 
-type Order 
+type Order
   @model(subscriptions: null)
   @auth(
     rules: [
       # only owner can see his orders
-      { allow: owner, identityClaim: "email", ownerField: "customer"},
-
+      { allow: owner, identityClaim: "email", ownerField: "customer" }
       # allow admins to view orders
-      { allow: groups, groups: ["Admin"]}
+      { allow: groups, groups: ["Admin"] }
     ]
   )
-  @key(name: "byUser", fields: ["user"]) 
-{
+  @key(name: "byUser", fields: ["user"]) {
   id: ID!
   user: String!
   date: String
@@ -60,7 +56,7 @@ type Order
   books: [BookOrder] @connection(keyName: "byOrder", fields: ["id"])
 }
 
-enum OrderStatus{
+enum OrderStatus {
   SUCCESS
   FAILED
 }
@@ -81,8 +77,8 @@ input ProcessOrderInput {
   address: String
 }
 
-type Mutation{
-  processOrder(input: ProcessOrderInput!): OrderStatus 
-  @function(name: "collectPaymentLambda-${env}") 
-  @function(name: "createOrderLambda-${env}")
+type Mutation {
+  processOrder(input: ProcessOrderInput!): OrderStatus
+    @function(name: "processPayment-${env}")
+    @function(name: "createOrder-${env}")
 }
