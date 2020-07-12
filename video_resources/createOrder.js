@@ -2,25 +2,27 @@ const { v4: uuidv4 } = require("uuid");
 const AWS = require("aws-sdk");
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const ORDER_TABLE = "Order-we6cwg6juveevi6sihqok72ayi-dev";
+const ORDER_TABLE = "<order_table_name>";
 const ORDER_TYPE = "Order";
-const BOOK_ORDER_TABLE = "BookOrder-we6cwg6juveevi6sihqok72ayi-dev";
+const BOOK_ORDER_TABLE = "<book_order_table name>";
 const BOOK_ORDER_TYPE = "BookOrder";
 
 const createOrder = async (payload) => {
-  const { order_id, username, total } = payload;
+  const { order_id, username, email, total } = payload;
   var params = {
     TableName: ORDER_TABLE,
     Item: {
       id: order_id,
       __typename: ORDER_TYPE,
-      customer: username,
+      customer: email,
+      user: username,
       total: total,
-      updatedAt: new Date(),
-      createdAt: new Date()
+      updatedAt: new Date().toISOString(),
+      createdAt: new Date().toISOString()
     }
   };
-  await documentClient.put(params);
+  console.log(params);
+  await documentClient.put(params).promise();
 };
 
 const createBookOrder = async (payload) => {
@@ -35,8 +37,8 @@ const createBookOrder = async (payload) => {
           book_id: cartItem.id,
           order_id: payload.order_id,
           customer: payload.email,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
         }
       }
     });
@@ -45,9 +47,16 @@ const createBookOrder = async (payload) => {
     RequestItems: {}
   };
   params["RequestItems"][BOOK_ORDER_TABLE] = bookOrders;
-  await documentClient.batchWrite(params);
+  console.log(params);
+  await documentClient.batchWrite(params).promise();
 };
 
+/*
+ * Get order details from processPayment lambda
+ * Create an order
+ * Link books to the order - Users can see the past orders and admins can view orders by user
+ * Email the invoice (Will be added later)
+ */
 exports.handler = async (event) => {
   try {
     let payload = event.prev.result;
@@ -58,6 +67,8 @@ exports.handler = async (event) => {
 
     // links books with the order
     await createBookOrder(payload);
+
+    // Note - You may add another function to email the invoice to the user
 
     return "SUCCESS";
   } catch (err) {
