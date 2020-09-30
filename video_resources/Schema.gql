@@ -4,9 +4,9 @@ type Book
     rules: [
       # allow admins to create, update and delete books
       { allow: groups, groups: ["Admin"] }
-      # allow all authenticated users to read posts
+      # allow all authenticated users to view books
       { allow: private, operations: [read] }
-      # allow all guest users (not authenticated) to read posts
+      # allow all guest users (not authenticated) to view books
       { allow: public, operations: [read] }
     ]
   ) {
