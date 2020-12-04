@@ -34,7 +34,7 @@ const Admin = () => {
         const key = `images/${uuidv4()}${name}.${extension}`;
         const url = `https://${bucket}.s3.${region}.amazonaws.com/public/${key}`
         try {
-            // Upload the file to s3 with private access level. 
+            // Upload the file to s3 with public access level. 
             await Storage.put(key, file, {
                 level: 'public',
                 contentType: file.type
