@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/items",
+      "lambdaFunction": "bookstore8d99fa7b",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/items"
+    }
+  ],
+  "resourceName": "api02ce8da1",
+  "apiName": "api02ce8da1",
+  "functionArns": [
+    {
+      "lambdaFunction": "bookstore8d99fa7b"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-bookstore-dev-155248-authRole",
+    "unAuthRoleName": "amplify-bookstore-dev-155248-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "bookstore8d99fa7b",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
