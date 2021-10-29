@@ -1,9 +1,11 @@
+/* eslint-disable */
+// this is an auto generated file. This will be overwritten
+
 export const processOrder = /* GraphQL */ `
   mutation ProcessOrder($input: ProcessOrderInput!) {
     processOrder(input: $input)
   }
 `;
-
 export const createBook = /* GraphQL */ `
   mutation CreateBook(
     $input: CreateBookInput!
@@ -24,6 +26,7 @@ export const createBook = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
@@ -52,6 +55,7 @@ export const updateBook = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
@@ -80,6 +84,7 @@ export const deleteBook = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
@@ -107,6 +112,7 @@ export const createBookOrder = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        customer
       }
       createdAt
       updatedAt
@@ -124,6 +130,7 @@ export const createBookOrder = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      customer
     }
   }
 `;
@@ -146,6 +153,7 @@ export const updateBookOrder = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        customer
       }
       createdAt
       updatedAt
@@ -163,6 +171,7 @@ export const updateBookOrder = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      customer
     }
   }
 `;
@@ -185,6 +194,7 @@ export const deleteBookOrder = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        customer
       }
       createdAt
       updatedAt
@@ -202,6 +212,7 @@ export const deleteBookOrder = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      customer
     }
   }
 `;
@@ -222,11 +233,13 @@ export const createOrder = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
       createdAt
       updatedAt
+      customer
     }
   }
 `;
@@ -247,11 +260,13 @@ export const updateOrder = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
       createdAt
       updatedAt
+      customer
     }
   }
 `;
@@ -272,11 +287,13 @@ export const deleteOrder = /* GraphQL */ `
           order_id
           createdAt
           updatedAt
+          customer
         }
         nextToken
       }
       createdAt
       updatedAt
+      customer
     }
   }
 `;
